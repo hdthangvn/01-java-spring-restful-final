@@ -1,5 +1,8 @@
 package vn.hoidanit.jobhunter.service;
 
+import java.lang.StackWalker.Option;
+
+import java.util.Optional;
 import org.springframework.stereotype.Service;
 import vn.hoidanit.jobhunter.domain.User;
 import vn.hoidanit.jobhunter.repository.UserRepository;
@@ -20,8 +23,20 @@ public class UserService {
     }
 
     public void handleDeleteUser(Long id) {
-        // Logic to delete user by id
         this.userRepository.deleteById(id);
+    }
+
+    public User fetchUserById(Long id) {
+        Optional<User> userOptional = this.userRepository.findById(id);
+        if (userOptional.isPresent()) {
+            return userOptional.get();
+        }
+
+        return null;
+    }
+
+    public java.util.List<User> fetchAllUsers() {
+        return this.userRepository.findAll();
     }
 
 }
