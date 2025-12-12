@@ -19,4 +19,9 @@ public class UserService {
         return this.userRepository.save(user);
     }
 
+    public void handleDeleteUser(Long id) {
+        // Logic to delete user by id
+        this.userRepository.deleteById(id);
+    }
+
 }
