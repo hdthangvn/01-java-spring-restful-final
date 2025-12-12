@@ -13,10 +13,10 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void handleCreateUser(User user) {
+    public User handleCreateUser(User user) {
         // Here you would typically add logic to save the user to the database
         // For example:
-        this.userRepository.save(user);
+        return this.userRepository.save(user);
     }
 
 }
