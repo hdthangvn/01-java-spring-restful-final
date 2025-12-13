@@ -3,7 +3,7 @@ package vn.hoidanit.jobhunter.controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
-
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -46,6 +46,12 @@ public class UserController {
     @GetMapping("/user")
     public List<User> getAllUsers() {
         return this.userService.fetchAllUsers();
+    }
+
+    @PutMapping("user")
+    public User updateUser(@RequestBody User user) {
+        User updatedUser = this.userService.handleCreateUser(user);
+        return updatedUser;
     }
 
 }
